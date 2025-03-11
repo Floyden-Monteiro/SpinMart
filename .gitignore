@@ -1,0 +1,104 @@
+# Angular Client
+client/
+client/.env
+client/node_modules/
+client/.angular/
+client/dist/
+client/.vscode/
+client/coverage/
+client/npm-debug.log
+client/*.js.map
+
+# .NET Core
+bin/
+obj/
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Environment files
+API/appsettings.Development.json
+API/appsettings.Production.json
+*.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+*.swp
+*.swo
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Generated content
+wwwroot/uploads/
+wwwroot/images/products/*
+!wwwroot/images/products/.gitkeep
+
+# IDE
+.idea/
+*.swp
+*.swo
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc

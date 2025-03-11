@@ -1,0 +1,45 @@
+[
+  {
+    "Name": "Trek Émonda SLR",
+    "Description": "High-performance carbon road bike",
+    "Price": 12499.99,
+    "PictureUrl": "images/products/trek-emonda.png",
+    "ProductTypeId": 1,
+    "ProductBrandId": 1,
+    "StockQuantity": 5
+  },
+  {
+    "Name": "Specialized Epic EVO",
+    "Description": "Full-suspension mountain bike",
+    "Price": 6999.99,
+    "PictureUrl": "images/products/specialized-epic.png",
+    "ProductTypeId": 2,
+    "ProductBrandId": 2,
+    "StockQuantity": 8
+  },
+  {
+    "Name": "Giant Revolt Advanced",
+    "Description": "Carbon gravel bike",
+    "Price": 3799.99,
+    "PictureUrl": "images/products/giant-revolt.png",
+    "ProductTypeId": 3,
+    "ProductBrandId": 3,
+    "StockQuantity": 12
+  },
+  {
+    "Name": "Cannondale Topstone Neo",
+    "Description": "Electric gravel bike with Bosch motor",
+    "Price": 5499.99,
+    "PictureUrl": "images/products/cannondale-topstone.png",
+    "ProductTypeId": 4,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "BMC Teammachine SLR",
+    "Description": "Professional-grade racing bike",
+    "Price": 8999.99,
+    "PictureUrl": "images/products/bmc-teammachine.png",
+    "ProductTypeId": 1,
+    "ProductBrandId": 6
+  }
+]

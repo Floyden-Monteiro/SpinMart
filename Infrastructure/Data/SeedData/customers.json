@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "John Doe",
+    "Email": "john@example.com",
+    "Phone": "555-0123",
+    "Address": "123 Bike Street, Cycling City"
+  },
+  {
+    "Name": "Jane Smith",
+    "Email": "jane@example.com",
+    "Phone": "555-0124",
+    "Address": "456 Pedal Avenue, Riding Town"
+  }
+]

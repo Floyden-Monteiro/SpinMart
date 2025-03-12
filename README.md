@@ -1,46 +1,57 @@
 # RetailShop E-Commerce API
 
-## Description
+## Overview
 
 A modern, feature-rich e-commerce backend built with .NET Core 8.0, implementing clean architecture principles. This API provides comprehensive endpoints for product management, order processing, payment handling, and customer management, using PostgreSQL for data persistence.
 
-## Key Features
+## Table of Contents
 
-### Product Management
+- [Features](#features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+
+## Features
+
+### 🛍️ Product Management
 
 - ✅ CRUD operations for products
 - ✅ Product categorization and filtering
 - ✅ Brand management
 - ✅ Price and inventory tracking
 
-### Order System
+### 📦 Order System
 
 - ✅ Order creation and management
 - ✅ Order status tracking
 - ✅ Multiple payment methods
 - ✅ Order history
 
-### Payment Processing
+### 💳 Payment Processing
 
 - ✅ Secure payment handling
 - ✅ Multiple payment methods (Credit Card, PayPal, etc.)
 - ✅ Payment status tracking
 - ✅ Transaction history
 
-### Customer Management
+### 👥 Customer Management
 
 - ✅ Customer profiles
 - ✅ Order history
 - ✅ Address management
 
-### Inventory Management
+### 📊 Inventory Management
 
 - ✅ Stock level tracking
 - ✅ Low stock alerts
 - ✅ Stock updates
 - ✅ Stock availability checks
 
-## Project Structure
+## Architecture
+
+### Project Structure
 
 ```
 RetailShop/
@@ -60,30 +71,57 @@ RetailShop/
     └── Services/       # External services
 ```
 
-## Technologies Used
+### Design Patterns & Principles
 
-- .NET Core 8.0
-- Entity Framework Core 8.0
-- PostgreSQL
-- AutoMapper
-- Swagger/OpenAPI
+- 🏛️ Clean Architecture
+- 📚 Repository Pattern
+- 🔍 Specification Pattern
+- ✨ SOLID Principles
+- 🔄 DRY (Don't Repeat Yourself)
 
-## Prerequisites
+### Diagrams
+
+#### Entity Relationship
+
+![Entity Relationship Diagram](Documentation/Entity.png)
+_Database schema showing relationships between core entities_
+
+#### Application Flow
+
+![Application Flow](Documentation/flow.png)
+_High-level overview of the application's data flow_
+
+#### Sequence Flow
+
+![Sequence Diagram](Documentation/sequence.png)
+_Request/response flow for key operations_
+
+## Tech Stack
+
+- ⚡ .NET Core 8.0
+- 🗄️ Entity Framework Core 8.0
+- 🐘 PostgreSQL
+- 🔄 AutoMapper
+- 📚 Swagger/OpenAPI
+
+## Getting Started
+
+### Prerequisites
 
 - .NET Core SDK 8.0
 - PostgreSQL
 - Visual Studio Code or Visual Studio 2022
 
-## Setup Instructions
+### Setup Steps
 
-1. Clone the repository
+1. **Clone Repository**
 
 ```powershell
 git clone https://github.com/Floyden-Monteiro/RetailShop.git
 cd RetailShop
 ```
 
-2. Update connection string in `API/appsettings.json`
+2. **Configure Database**
 
 ```json
 {
@@ -93,59 +131,59 @@ cd RetailShop
 }
 ```
 
-3. Apply database migrations
+3. **Run Migrations**
 
 ```powershell
 dotnet ef database update -p Infrastructure -s API
 ```
 
-4. Run the application
+4. **Start Application**
 
 ```powershell
 cd API
 dotnet run
 ```
 
-## API Endpoints
+## API Documentation
 
-### Products
+### 🛍️ Products
 
-- `GET /api/products` - Get all products
-- `GET /api/products/{id}` - Get product by ID
+- `GET /api/products` - List all products
+- `GET /api/products/{id}` - Get product details
 - `POST /api/products` - Create product
 - `PUT /api/products/{id}` - Update product
 - `DELETE /api/products/{id}` - Delete product
 
-### Orders
+### 📦 Orders
 
-- `GET /api/orders` - Get all orders
-- `GET /api/orders/{id}` - Get order by ID
+- `GET /api/orders` - List all orders
+- `GET /api/orders/{id}` - Get order details
 - `POST /api/orders` - Create order
-- `PUT /api/orders/{id}/status` - Update order status
+- `PUT /api/orders/{id}/status` - Update status
 
-### Payments
+### 💳 Payments
 
-- `GET /api/payments` - Get all payments
-- `GET /api/payments/{id}` - Get payment by ID
+- `GET /api/payments` - List all payments
+- `GET /api/payments/{id}` - Get payment details
 - `POST /api/payments` - Process payment
 - `GET /api/payments/order/{orderId}` - Get order payment
 
-### Customers
+### 👥 Customers
 
-- `GET /api/customers` - Get all customers
+- `GET /api/customers` - List all customers
 - `GET /api/customers/{id}` - Get customer details
 - `POST /api/customers` - Create customer
 - `PUT /api/customers/{id}` - Update customer
 
-### Inventory
+### 📊 Inventory
 
-- `GET /api/inventory/low-stock` - Get products with low stock (below threshold)
-- `PUT /api/inventory/update-stock/{id}` - Update product stock quantity
-- `GET /api/inventory/check-stock/{id}` - Check if product is in stock for requested quantity
+- `GET /api/inventory/low-stock` - Check low stock
+- `PUT /api/inventory/update-stock/{id}` - Update stock
+- `GET /api/inventory/check-stock/{id}` - Check availability
 
-Example Requests:
+#### Example Requests
 
-**Check Low Stock Products**
+**Check Low Stock**
 
 ```http
 GET /api/inventory/low-stock?threshold=5
@@ -162,34 +200,20 @@ Content-Type: application/json
 }
 ```
 
-**Check Stock Availability**
+**Check Availability**
 
 ```http
 GET /api/inventory/check-stock/1?quantity=5
 ```
 
-## Design Patterns & Principles
-
-- Clean Architecture
-- Repository Pattern
-- Specification Pattern
-- SOLID Principles
-- DRY (Don't Repeat Yourself)
-
-## Future Enhancements
-
-- [ ] Angular Frontend Implementation
-- [ ] Authentication/Authorization
-- [ ] Payment Integration
-- [ ] Order Processing System
-- [ ] Cloud Deployment
-
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/NewFeature`)
+1. Fork repository
+2. Create feature branch (`git checkout -b feature/NewFeature`)
 3. Commit changes (`git commit -m 'Add NewFeature'`)
 4. Push to branch (`git push origin feature/NewFeature`)
-5. Open a Pull Request
+5. Open Pull Request
 
-Project Link: [https://github.com/Floyden-Monteiro/RetailShop](https://github.com/Floyden-Monteiro/RetailShop)
+---
+
+[Project Repository](https://github.com/Floyden-Monteiro/RetailShop)

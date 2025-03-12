@@ -27,8 +27,11 @@ namespace Infrastructure.Services
                 var order = await _orderRepo.GetByIdAsync(payment.OrderId);
                 if (order == null) return null;
 
+                // Set payment details
                 payment.Status = PaymentStatus.Pending;
                 payment.PaymentDate = DateTime.UtcNow;
+                payment.Currency = payment.Currency ?? "USD";
+                payment.TransactionId = $"txn_{DateTime.UtcNow.Ticks}";
 
                 _paymentRepo.Add(payment);
                 await _paymentRepo.SaveAsync();
@@ -42,7 +45,7 @@ namespace Infrastructure.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error processing payment");
+                _logger.LogError(ex, "Error processing payment for OrderId: {OrderId}", payment.OrderId);
                 return null;
             }
         }

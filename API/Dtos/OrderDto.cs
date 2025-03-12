@@ -37,6 +37,9 @@ namespace API.DTOs
         public List<CreateOrderItemDto> Items { get; set; } = new List<CreateOrderItemDto>();
 
         [Required]
+        public PaymentMethod PaymentMethod { get; set; }
+
+        [Required]
         [StringLength(180)]
         public string ShippingAddress { get; set; }
     }
@@ -53,10 +56,12 @@ namespace API.DTOs
 
     public class PaymentToReturnDto
     {
-        public int Id { get; set; }
+        public int OrderId { get; set; }
         public string PaymentMethod { get; set; }
         public string Status { get; set; }
         public decimal Amount { get; set; }
         public DateTime PaymentDate { get; set; }
+        public string TransactionId { get; set; }
+        public string Currency { get; set; }
     }
 }

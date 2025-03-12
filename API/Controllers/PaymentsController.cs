@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -10,31 +11,36 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize]
     public class PaymentsController : BaseApiController
     {
         private readonly IPaymentService _paymentService;
         private readonly IGenericRepository<Payment> _paymentRepo;
+        private readonly IMapper _mapper;
 
-        public PaymentsController(IPaymentService paymentService, IGenericRepository<Payment> paymentRepo)
+        public PaymentsController(
+            IPaymentService paymentService,
+            IGenericRepository<Payment> paymentRepo,
+            IMapper mapper)
         {
             _paymentService = paymentService;
             _paymentRepo = paymentRepo;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Payment>>> GetPayments()
+        public async Task<ActionResult<IReadOnlyList<PaymentToReturnDto>>> GetPayments()
         {
             var payments = await _paymentRepo.ListAllAsync();
-            return Ok(payments);
+            var paymentsToReturn = _mapper.Map<IReadOnlyList<Payment>, IReadOnlyList<PaymentToReturnDto>>(payments);
+            return Ok(paymentsToReturn);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Payment>> GetPayment(int id)
+        public async Task<ActionResult<PaymentToReturnDto>> GetPayment(int id)
         {
             var payment = await _paymentRepo.GetByIdAsync(id);
             if (payment == null) return NotFound();
-            return Ok(payment);
+            return _mapper.Map<Payment, PaymentToReturnDto>(payment);
         }
 
         [HttpGet("order/{orderId}")]
@@ -46,16 +52,19 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Payment>> ProcessPayment([FromBody] Payment payment)
+        public async Task<ActionResult<PaymentToReturnDto>> ProcessPayment([FromBody] CreatePaymentDto createPaymentDto)
         {
-            if (payment.Amount <= 0)
+            if (createPaymentDto.Amount <= 0)
                 return BadRequest("Payment amount must be greater than zero");
 
+            var payment = _mapper.Map<CreatePaymentDto, Payment>(createPaymentDto);
             var result = await _paymentService.ProcessPaymentAsync(payment);
+
             if (result == null)
                 return BadRequest("Payment processing failed");
 
-            return CreatedAtAction(nameof(GetPayment), new { id = result.Id }, result);
+            var paymentToReturn = _mapper.Map<Payment, PaymentToReturnDto>(result);
+            return CreatedAtAction(nameof(GetPayment), new { id = result.Id }, paymentToReturn);
         }
 
         [HttpPut("{id}/status")]
@@ -81,7 +90,6 @@ namespace API.Controllers
         }
 
         [HttpGet("summary")]
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PaymentSummaryDto>> GetPaymentSummary()
         {
             var payments = await _paymentRepo.ListAllAsync();

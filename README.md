@@ -214,6 +214,3 @@ GET /api/inventory/check-stock/1?quantity=5
 4. Push to branch (`git push origin feature/NewFeature`)
 5. Open Pull Request
 
----
-
-[Project Repository](https://github.com/Floyden-Monteiro/RetailShop)

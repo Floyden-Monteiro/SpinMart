@@ -19,9 +19,17 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
             .HasConversion<string>()
             .IsRequired();
 
+        builder.Navigation(o => o.OrderItems).AutoInclude();
+        builder.Navigation(o => o.Payment).AutoInclude();
+        builder.Navigation(o => o.Customer).AutoInclude();
+
         builder.HasOne(o => o.Customer)
             .WithMany(c => c.Orders)
             .HasForeignKey(o => o.CustomerId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(o => o.Payment)
+            .WithOne(p => p.Order)
+            .HasForeignKey<Payment>(p => p.OrderId);
     }
 }

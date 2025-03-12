@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "OrderId": 1,
+    "Amount": 12499.99,
+    "PaymentDate": "2024-03-12T10:05:00",
+    "Status": 1,
+    "PaymentMethod": 1,
+    "TransactionId": "txn_123456789"
+  },
+  {
+    "Id": 2,
+    "OrderId": 2,
+    "Amount": 6999.99,
+    "PaymentDate": "2024-03-13T11:35:00",
+    "Status": 1,
+    "PaymentMethod": 1,
+    "TransactionId": "txn_987654321"
+  }
+]

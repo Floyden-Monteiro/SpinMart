@@ -35,16 +35,16 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<StoreContext>();
-    // var logger = services.GetRequiredService<ILogger<StoreContextSeed>>();
+    var logger = services.GetRequiredService<ILogger<StoreContextSeed>>();
 
     try
     {
         await context.Database.MigrateAsync();
-        // await StoreContextSeed.SeedAsync(context, logger);
+        await StoreContextSeed.SeedAsync(context, logger);
     }
     catch (Exception ex)
     {
-        // logger.LogError(ex, "An error occurred during migration.");
+        logger.LogError(ex, "An error occurred during migration.");
     }
 }
 

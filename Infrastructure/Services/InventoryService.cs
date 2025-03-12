@@ -18,15 +18,18 @@ namespace Infrastructure.Services
             var product = await _productRepo.GetByIdAsync(productId);
             if (product == null) return false;
 
-            product.StockQuantity = quantity;
+            // Prevent negative stock
+            if (product.StockQuantity + quantity < 0) return false;
+
+            product.StockQuantity += quantity;  // Add or subtract from current stock
             _productRepo.Update(product);
             return await _productRepo.SaveAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetLowStockProductsAsync(int threshold = 5)
+        public async Task<IEnumerable<Product>> GetLowStockProductsAsync(int threshold)
         {
-            var products = await _productRepo.ListAllAsync();
-            return products.Where(p => p.StockQuantity <= threshold);
+            var spec = new ProductWithTypesAndBrandsSpecification(threshold, true);
+            return await _productRepo.ListAsync(spec);
         }
 
         public async Task<bool> IsInStockAsync(int productId, int quantity)

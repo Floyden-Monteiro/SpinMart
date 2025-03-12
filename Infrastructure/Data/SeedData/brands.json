@@ -1,42 +1,32 @@
 [
-    {
-      "Id": 1,
-      "Name": "Trek"
-    },
-    {
-      "Id": 2,
-      "Name": "Specialized"
-    },
-    {
-      "Id": 3,
-      "Name": "Giant"
-    },
-    {
-      "Id": 4,
-      "Name": "Cannondale"
-    },
-    {
-      "Id": 5,
-      "Name": "Scott"
-    },
-    {
-      "Id": 6,
-      "Name": "BMC"
-    },
-    {
-      "Id": 7,
-      "Name": "Bianchi"
-    },
-    {
-      "Id": 8,
-      "Name": "Merida"
-    },
-    {
-      "Id": 9,
-      "Name": "Santa Cruz"
-    },
-    {
-      "Id": 10,
-      "Name": "Cervélo"
-    }
-  ]
+  {
+    "Name": "Trek"
+  },
+  {
+    "Name": "Specialized"
+  },
+  {
+    "Name": "Giant"
+  },
+  {
+    "Name": "Cannondale"
+  },
+  {
+    "Name": "Scott"
+  },
+  {
+    "Name": "BMC"
+  },
+  {
+    "Name": "Bianchi"
+  },
+  {
+    "Name": "Merida"
+  },
+  {
+    "Name": "Santa Cruz"
+  },
+  {
+    "Name": "Cervélo"
+  }
+]

@@ -85,7 +85,7 @@ namespace API.Controllers
             _customerRepo.Delete(customer);
 
             if (await _customerRepo.SaveAsync())
-                return Ok();
+                return Ok(new ApiResponse(200, $"Customer '{customer.Name}' deleted successfully"));
 
             return BadRequest(new ApiResponse(400, "Problem deleting customer"));
         }

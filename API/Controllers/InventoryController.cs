@@ -1,4 +1,6 @@
 using API.Dtos;
+using API.DTOs;
+using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -7,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize]
     public class InventoryController : BaseApiController
     {
         private readonly IInventoryService _inventoryService;
@@ -28,11 +29,14 @@ namespace API.Controllers
         }
 
         [HttpPut("update-stock/{id}")]
-        public async Task<ActionResult> UpdateStock(int id, [FromBody] int quantity)
+        public async Task<ActionResult> UpdateStock(int id, [FromBody] UpdateStockDto updateDto)
         {
-            var result = await _inventoryService.UpdateStockQuantityAsync(id, quantity);
-            if (!result) return BadRequest("Failed to update stock");
-            return Ok();
+            var result = await _inventoryService.UpdateStockQuantityAsync(id, updateDto.Quantity);
+
+            if (!result)
+                return BadRequest(new ApiResponse(400, "Failed to update stock quantity"));
+
+            return Ok(new ApiResponse(200, $"Stock quantity updated successfully to {updateDto.Quantity} units"));
         }
 
         [HttpGet("check-stock/{id}")]

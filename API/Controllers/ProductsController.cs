@@ -7,8 +7,8 @@ using Core.Specification;
 
 namespace API.Controllers;
 
-[Route("[controller]")]
-public class ProductsController : Controller
+
+public class ProductsController : BaseApiController
 {
    private readonly IGenericRepository<Product> _productRepository;
    private readonly IGenericRepository<ProductBrand> _productBrandRepository;

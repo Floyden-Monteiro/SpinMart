@@ -9,8 +9,8 @@ namespace Infrastructure.Data.Config
         public void Configure(EntityTypeBuilder<ProductBrand> builder)
         {
             builder.Property(b => b.Id)
-                .HasIdentityOptions(startValue: 1)
-                .UseSerialColumn(); 
+                .UseIdentityAlwaysColumn()
+                .HasIdentityOptions(startValue: 1);
 
             builder.Property(b => b.Name)
                 .IsRequired()

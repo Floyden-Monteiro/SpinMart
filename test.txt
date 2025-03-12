@@ -1,0 +1,23 @@
+Independent Tables (No Foreign Keys)
+
+    brands
+    cycle_types
+    order_status
+    payment_methods
+    payment_status
+
+Main Entity Tables
+
+    users
+    customers
+
+Dependent Tables (Referencing Other Tables)
+
+    cycles (depends on brands, cycle_types)
+    orders (depends on customers, users, order_status)
+    order_items (depends on orders, cycles)
+    payments (depends on orders, payment_methods, payment_status)
+
+
+    //from root migration
+    dotnet ef migrations add InitialCreate -p Infrastructure -s  API -o Data/Migrations

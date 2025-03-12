@@ -37,6 +37,14 @@ namespace API.Helpers
             CreateMap<ProductBrand, BrandToReturnDto>();
             CreateMap<BrandCreateDto, ProductBrand>();
             CreateMap<BrandUpdateDto, ProductBrand>();
+            CreateMap<OrderItem, OrderItemToReturnDto>()
+          .ForMember(d => d.ProductName, o => o.MapFrom(s => s.Product.Name))
+          .ForMember(d => d.PictureUrl, o => o.MapFrom(s => s.Product.PictureUrl))
+          .ForMember(d => d.Total, o => o.MapFrom(s => s.Price * s.Quantity));
+
+            CreateMap<Payment, PaymentToReturnDto>()
+                .ForMember(d => d.PaymentMethod, o => o.MapFrom(s => s.PaymentMethod.ToString()))
+                .ForMember(d => d.Status, o => o.MapFrom(s => s.Status.ToString()));
         }
     }
 }

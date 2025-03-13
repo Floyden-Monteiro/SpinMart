@@ -1,14 +1,14 @@
 [
   {
     "Name": "Admin User",
-    "Email": "admin@velostore.com",
-    "PasswordHash": "AQAAAAEAACcQAAAAEHbALpDt9YE8+T3CzAGWUzMWbvxQSzIZBmD6TYEmU0u6oLw6BKlY3SYPmfs8bMIKtg==",
+    "Email": "admin@store.com",
+    "PasswordHash": "123456",
     "Role": "Admin"
   },
   {
     "Name": "Employee User",
-    "Email": "employee@velostore.com",
-    "PasswordHash": "AQAAAAEAACcQAAAAEHbALpDt9YE8+T3CzAGWUzMWbvxQSzIZBmD6TYEmU0u6oLw6BKlY3SYPmfs8bMIKtg==",
+    "Email": "employee@store.com",
+    "PasswordHash": "123456",
     "Role": "Employee"
   }
 ]

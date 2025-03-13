@@ -1,6 +1,5 @@
 [
   {
-    "Id": 1,
     "CustomerId": 1,
     "OrderDate": "2024-03-12T10:00:00Z",
     "Status": 0,
@@ -8,7 +7,6 @@
     "ShippingAddress": "123 Main St, City, Country"
   },
   {
-    "Id": 2,
     "CustomerId": 1,
     "OrderDate": "2024-03-13T11:30:00Z",
     "Status": 1,

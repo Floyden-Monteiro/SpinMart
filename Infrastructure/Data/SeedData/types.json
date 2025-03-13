@@ -1,18 +1,14 @@
 [
   {
-    "Id": 1,
     "Name": "Road Bikes"
   },
   {
-    "Id": 2,
     "Name": "Mountain Bikes"
   },
   {
-    "Id": 3,
     "Name": "Hybrid Bikes"
   },
   {
-    "Id": 4,
     "Name": "Electric Bikes"
   }
 ]
